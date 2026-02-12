@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt to Draw.io"
+  short_description: "CLI drawio generation, edit, export, validation"
+  default_prompt: "Use $prompt-to-drawio to generate or edit a .drawio diagram from my prompt and export a PNG."
