@@ -1,5 +1,5 @@
 ---
-name: prompt-to-drawio
+name: prompt-to-drawio-skill
 description: Generate and edit draw.io artifacts from natural-language prompts without a frontend. Use when the user asks for prompt-to-diagram workflows that need `.drawio` output, optional image export (`png`/`svg`/`pdf`/`jpg`), context ingestion (image/PDF/text/URL), shape-library lookup, or visual validation loops.
 ---
 
@@ -20,7 +20,7 @@ Use this skill to run a CLI-only version of Next AI Draw.io capabilities.
 ## Runtime Script
 
 Primary entrypoint:
-- `/Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py`
+- `scripts/prompt_to_drawio.py`
 
 Subcommands:
 - `generate`
@@ -81,7 +81,7 @@ Model naming notes:
 ### 1) Create Diagram
 
 ```bash
-python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py generate \
+python3 scripts/prompt_to_drawio.py generate \
   --prompt "Create a user login + MFA + session flowchart" \
   --out-drawio "/absolute/path/auth-flow.drawio" \
   --out-image "/absolute/path/auth-flow.png" \
@@ -92,7 +92,7 @@ python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawi
 ### 2) Create Diagram from Image/PDF/URL Context
 
 ```bash
-python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py generate \
+python3 scripts/prompt_to_drawio.py generate \
   --prompt "Replicate architecture style and improve readability" \
   --file "/absolute/path/reference-arch.png" \
   --file "/absolute/path/requirements.pdf" \
@@ -105,7 +105,7 @@ python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawi
 ### 3) Edit Existing Diagram
 
 ```bash
-python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py edit \
+python3 scripts/prompt_to_drawio.py edit \
   --in-drawio "/absolute/path/cloud.drawio" \
   --prompt "Add WAF before ALB and split app tier into two services" \
   --out-drawio "/absolute/path/cloud-v2.drawio" \
@@ -116,7 +116,7 @@ python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawi
 ### 4) Export Only
 
 ```bash
-python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py export \
+python3 scripts/prompt_to_drawio.py export \
   --in-drawio "/absolute/path/cloud-v2.drawio" \
   --out-image "/absolute/path/cloud-v2.pdf"
 ```
@@ -124,7 +124,7 @@ python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawi
 ### 5) Validation Only
 
 ```bash
-python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py validate \
+python3 scripts/prompt_to_drawio.py validate \
   --in-drawio "/absolute/path/cloud-v2.drawio" \
   --fail-on-critical
 ```
@@ -132,8 +132,8 @@ python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawi
 ### 6) Shape Library Discovery
 
 ```bash
-python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py library --list
-python3 /Users/zhaofengli/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py library --name aws4
+python3 scripts/prompt_to_drawio.py library --list
+python3 scripts/prompt_to_drawio.py library --name aws4
 ```
 
 ## Output Contract

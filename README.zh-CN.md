@@ -43,14 +43,21 @@ npx skills@latest add lzfxxx/prompt-to-drawio-skill -g -y
 
 ```bash
 mkdir -p "$HOME/.codex/skills"
-git clone https://github.com/lzfxxx/prompt-to-drawio-skill.git "$HOME/.codex/skills/prompt-to-drawio"
+git clone https://github.com/lzfxxx/prompt-to-drawio-skill.git "$HOME/.codex/skills/prompt-to-drawio-skill"
 ```
 
 更新到最新：
 
 ```bash
-git -C "$HOME/.codex/skills/prompt-to-drawio" pull
+git -C "$HOME/.codex/skills/prompt-to-drawio-skill" pull
 ```
+
+## 发布 / 收录到 `skills.sh`
+
+- `skills.sh` 通常没有单独的手动提交通道。
+- 仓库公开后，只要用户通过 `npx skills` 安装，系统一般会自动发现并收录。
+- 如果 `npx skills` 的匿名遥测未关闭，会更有利于被索引发现。
+- 推荐发布流程：公开仓库、保持 `SKILL.md` 在约定位置、先验证 `npx skills add lzfxxx/prompt-to-drawio-skill` 可安装，再等待索引。
 
 ## 技能能力
 
@@ -119,7 +126,7 @@ DRAWIO_VALIDATION_MODEL=gemini-3-pro-preview
 ### 生成新图
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" generate \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" generate \
   --prompt "Create a login + MFA + session flow" \
   --out-drawio "/tmp/auth-flow.drawio" \
   --out-image "/tmp/auth-flow.pdf" \
@@ -130,7 +137,7 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" gener
 ### 带上下文生成
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" generate \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" generate \
   --prompt "Replicate architecture style and improve readability" \
   --file "/abs/path/requirements.pdf" \
   --file "/abs/path/reference.png" \
@@ -143,7 +150,7 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" gener
 ### 编辑已有图
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" edit \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" edit \
   --in-drawio "/tmp/cloud.drawio" \
   --prompt "Add WAF before ALB and split app tier into two services" \
   --out-drawio "/tmp/cloud-v2.drawio" \
@@ -155,7 +162,7 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" edit 
 ### 仅导出
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" export \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" export \
   --in-drawio "/tmp/cloud-v2.drawio" \
   --out-image "/tmp/cloud-v2.pdf"
 ```
@@ -163,7 +170,7 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" expor
 ### 仅校验
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" validate \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" validate \
   --in-drawio "/tmp/cloud-v2.drawio" \
   --fail-on-critical
 ```
@@ -171,8 +178,8 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" valid
 ### Shape library 查询
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" library --list
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" library --name aws4
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" library --list
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" library --name aws4
 ```
 
 ## 输出约定

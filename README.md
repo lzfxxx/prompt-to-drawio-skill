@@ -43,14 +43,21 @@ Notes:
 
 ```bash
 mkdir -p "$HOME/.codex/skills"
-git clone https://github.com/lzfxxx/prompt-to-drawio-skill.git "$HOME/.codex/skills/prompt-to-drawio"
+git clone https://github.com/lzfxxx/prompt-to-drawio-skill.git "$HOME/.codex/skills/prompt-to-drawio-skill"
 ```
 
 ### Update to latest
 
 ```bash
-git -C "$HOME/.codex/skills/prompt-to-drawio" pull
+git -C "$HOME/.codex/skills/prompt-to-drawio-skill" pull
 ```
+
+## Publishing / Discovery on `skills.sh`
+
+- There is typically no manual submission form for `skills.sh`.
+- Discovery is usually automatic after the repository is public and users install it via `npx skills`.
+- Keeping anonymous telemetry enabled in `npx skills` helps the skill be discovered by the index.
+- Recommended publish flow: make the repo public, keep `SKILL.md` at the expected path, verify `npx skills add lzfxxx/prompt-to-drawio-skill`, then wait for indexing.
 
 ## What This Skill Does
 
@@ -119,7 +126,7 @@ Dotenv behavior:
 ### Generate a new diagram
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" generate \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" generate \
   --prompt "Create a login + MFA + session flow" \
   --out-drawio "/tmp/auth-flow.drawio" \
   --out-image "/tmp/auth-flow.pdf" \
@@ -130,7 +137,7 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" gener
 ### Generate with context files/URL/library
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" generate \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" generate \
   --prompt "Replicate architecture style and improve readability" \
   --file "/abs/path/requirements.pdf" \
   --file "/abs/path/reference.png" \
@@ -143,7 +150,7 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" gener
 ### Edit an existing diagram
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" edit \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" edit \
   --in-drawio "/tmp/cloud.drawio" \
   --prompt "Add WAF before ALB and split app tier into two services" \
   --out-drawio "/tmp/cloud-v2.drawio" \
@@ -155,7 +162,7 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" edit 
 ### Export only
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" export \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" export \
   --in-drawio "/tmp/cloud-v2.drawio" \
   --out-image "/tmp/cloud-v2.pdf"
 ```
@@ -163,7 +170,7 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" expor
 ### Validation only
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" validate \
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" validate \
   --in-drawio "/tmp/cloud-v2.drawio" \
   --fail-on-critical
 ```
@@ -171,8 +178,8 @@ python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" valid
 ### Shape library discovery
 
 ```bash
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" library --list
-python3 "$HOME/.codex/skills/prompt-to-drawio/scripts/prompt_to_drawio.py" library --name aws4
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" library --list
+python3 "$HOME/.codex/skills/prompt-to-drawio-skill/scripts/prompt_to_drawio.py" library --name aws4
 ```
 
 ## Output Contract
